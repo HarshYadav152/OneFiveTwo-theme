@@ -1,0 +1,162 @@
+{
+  "dark": {
+    "type": "dark",
+    "bg": {
+      "sunken": "#020308",
+      "base": "#04050d",
+      "raised": "#090b17",
+      "overlay": "#0f1222",
+      "hover": "#141830",
+      "active": "#1a2040"
+    },
+    "border": {
+      "subtle": "#0e1224",
+      "default": "#1a2140",
+      "strong": "#2b3560"
+    },
+    "text": {
+      "primary": "#eaf2ff",
+      "secondary": "#bcc8e6",
+      "muted": "#8c97b8",
+      "faint": "#555e83",
+      "comment": "#7f8bb0",
+      "onAccent": "#04050d"
+    },
+    "accent": {
+      "primary": "#5cc8ff",
+      "secondary": "#a66bff"
+    },
+    "selection": {
+      "base": "#1d2f66",
+      "soft": "#16234d"
+    },
+    "semantic": {
+      "error": "#ff5c7a",
+      "warning": "#ffc46b",
+      "info": "#5cc8ff",
+      "success": "#63e6be",
+      "hint": "#9ee7ff"
+    },
+    "syntax": {
+      "keyword": "#b388ff",
+      "string": "#6ee7d0",
+      "function": "#7cd4ff",
+      "number": "#ff8fb1",
+      "type": "#9fb4ff",
+      "property": "#8fe3ff",
+      "tag": "#5cc8ff",
+      "attribute": "#d7b8ff",
+      "operator": "#9fb0e6",
+      "regex": "#6ee7d0",
+      "variable": "#eaf2ff",
+      "invalid": "#ff5c7a"
+    },
+    "git": {
+      "added": "#50e3c2",
+      "modified": "#ffc46b",
+      "untracked": "#8be28b",
+      "deleted": "#ff5c7a",
+      "conflict": "#ff9e5c",
+      "renamed": "#5cc8ff",
+      "ignored": "#515a7d"
+    },
+    "ansi": {
+      "black": "#141830",
+      "red": "#ff5c7a",
+      "green": "#63e6be",
+      "yellow": "#ffc46b",
+      "blue": "#5cc8ff",
+      "magenta": "#b388ff",
+      "cyan": "#8fe3ff",
+      "white": "#bcc8e6",
+      "brightBlack": "#525d85",
+      "brightRed": "#ff8aa0",
+      "brightGreen": "#8ff0d2",
+      "brightYellow": "#ffd98f",
+      "brightBlue": "#8fdcff",
+      "brightMagenta": "#cdb0ff",
+      "brightCyan": "#b8efff",
+      "brightWhite": "#eaf2ff"
+    }
+  },
+  "light": {
+    "type": "light",
+    "bg": {
+      "sunken": "#ebdfd0",
+      "base": "#faf3ea",
+      "raised": "#f3e9dc",
+      "overlay": "#fffaf3",
+      "hover": "#eadccb",
+      "active": "#dfcdb8"
+    },
+    "border": {
+      "subtle": "#dfcdb8",
+      "default": "#cdb89e",
+      "strong": "#a89478"
+    },
+    "text": {
+      "primary": "#1c1415",
+      "secondary": "#3d2c2e",
+      "muted": "#6b5558",
+      "faint": "#9a857c",
+      "comment": "#7a6568",
+      "onAccent": "#ffffff"
+    },
+    "accent": {
+      "primary": "#c2271f",
+      "secondary": "#d9480f"
+    },
+    "selection": {
+      "base": "#f2c4bd",
+      "soft": "#f7dcd6"
+    },
+    "semantic": {
+      "error": "#9f1239",
+      "warning": "#a15c00",
+      "info": "#1d5fa8",
+      "success": "#2f6f3a",
+      "hint": "#0f766e"
+    },
+    "syntax": {
+      "keyword": "#b3201a",
+      "string": "#2f6f4a",
+      "function": "#8a4b00",
+      "number": "#a0316b",
+      "type": "#1f4f8f",
+      "property": "#0f6b66",
+      "tag": "#a8431a",
+      "attribute": "#8a5a00",
+      "operator": "#7a3b2e",
+      "regex": "#0f6b66",
+      "variable": "#1c1415",
+      "invalid": "#9f1239"
+    },
+    "git": {
+      "added": "#0e716a",
+      "modified": "#8a5a00",
+      "untracked": "#2f6f3a",
+      "deleted": "#9f1239",
+      "conflict": "#b83e0b",
+      "renamed": "#1d5fa8",
+      "ignored": "#a39088"
+    },
+    "ansi": {
+      "black": "#1c1415",
+      "red": "#b3201a",
+      "green": "#2f6f3a",
+      "yellow": "#8a5a00",
+      "blue": "#1d5fa8",
+      "magenta": "#8a2d7a",
+      "cyan": "#0f6b66",
+      "white": "#6b5558",
+      "brightBlack": "#5e4a4d",
+      "brightRed": "#cc2a22",
+      "brightGreen": "#377944",
+      "brightYellow": "#956100",
+      "brightBlue": "#1f6bc0",
+      "brightMagenta": "#9b36a0",
+      "brightCyan": "#127a74",
+      "brightWhite": "#4a3a3c"
+    }
+  }
+}
