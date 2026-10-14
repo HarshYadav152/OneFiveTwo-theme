@@ -1,0 +1,56 @@
+{
+  "name": "onefivetwo-themes",
+  "displayName": "OneFiveTwo",
+  "description": "Void Dark (Gojo's Domain Expansion inspired) and Shrine Light (Sukuna's Domain Expansion inspired). High-contrast, WCAG-checked VS Code themes.",
+  "version": "0.1.0",
+  "publisher": "HarshYadav152",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HarshYadav152/onefivetwo-theme.git"
+  },
+  "homepage": "https://github.com/HarshYadav152/onefivetwo-theme#readme",
+  "bugs": {
+    "url": "https://github.com/HarshYadav152/onefivetwo-theme/issues"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "dark",
+    "light",
+    "high contrast",
+    "gojo",
+    "sukuna",
+    "jujutsu kaisen"
+  ],
+  "scripts": {
+    "tune": "node tune.js",
+    "contrast": "node contrast.js",
+    "build": "node build.js",
+    "package": "node tune.js && node contrast.js && node build.js && vsce package --allow-missing-repository"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "OneFiveTwo Void Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/onefivetwo-void-dark-color-theme.json"
+      },
+      {
+        "label": "OneFiveTwo Shrine Light",
+        "uiTheme": "vs",
+        "path": "./themes/onefivetwo-shrine-light-color-theme.json"
+      }
+    ]
+  },
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#04050d",
+    "theme": "dark"
+  }
+}
