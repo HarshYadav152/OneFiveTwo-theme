@@ -1,0 +1,10 @@
+.vscode/**
+build.js
+tune.js
+contrast.js
+preview.js
+preview/**
+palette.json
+node_modules/**
+*.vsix
+icon.svg
