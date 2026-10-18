@@ -3,11 +3,16 @@
 
 const fs = require("fs");
 const path = require("path");
-const palette = JSON.parse(fs.readFileSync(path.join(__dirname, "palette.json"), "utf8"));
+const palette = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "palette.json"), "utf8"),
+);
 
 const lum = (hex) => {
-  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
-    .map((c) => (c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4)));
+  const [r, g, b] = [1, 3, 5]
+    .map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
+    .map((c) =>
+      c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4),
+    );
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 };
 const ratio = (a, b) => {
@@ -20,18 +25,23 @@ const check = (mode, label, fg, bg, min) => {
   const r = ratio(fg, bg);
   const ok = r >= min;
   if (!ok) failures++;
-  console.log(`${ok ? "PASS" : "FAIL"} [${mode}] ${label.padEnd(26)} ${fg} on ${bg}  ${r.toFixed(2)} (min ${min})`);
+  console.log(
+    `${ok ? "PASS" : "FAIL"} [${mode}] ${label.padEnd(26)} ${fg} on ${bg}  ${r.toFixed(2)} (min ${min})`,
+  );
 };
 
-for (const mode of ["dark", "light"]) {
+for (const mode of Object.keys(palette)) {
   const p = palette[mode];
   const base = p.bg.base;
   // text on editor bg
-  for (const k of ["primary", "secondary", "muted", "comment"]) check(mode, `text.${k}`, p.text[k], base, 4.5);
+  for (const k of ["primary", "secondary", "muted", "comment"])
+    check(mode, `text.${k}`, p.text[k], base, 4.5);
   // syntax on editor bg
-  for (const [k, v] of Object.entries(p.syntax)) check(mode, `syntax.${k}`, v, base, 4.5);
+  for (const [k, v] of Object.entries(p.syntax))
+    check(mode, `syntax.${k}`, v, base, 4.5);
   // semantic on editor bg
-  for (const [k, v] of Object.entries(p.semantic)) check(mode, `semantic.${k}`, v, base, 4.5);
+  for (const [k, v] of Object.entries(p.semantic))
+    check(mode, `semantic.${k}`, v, base, 4.5);
   // git decorations on sidebar bg
   for (const [k, v] of Object.entries(p.git)) {
     if (k === "ignored") continue; // intentionally dim
