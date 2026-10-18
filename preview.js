@@ -2,68 +2,294 @@
 // Usage: node preview.js  (needs playwright + chromium)
 const fs = require("fs");
 const path = require("path");
-const palette = JSON.parse(fs.readFileSync(path.join(__dirname, "palette.json"), "utf8"));
+const palette = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "palette.json"), "utf8"),
+);
 
 const targets = [
   ["dark", "onefivetwo-void-dark-color-theme.json", "OneFiveTwo Void Dark"],
-  ["light", "onefivetwo-shrine-light-color-theme.json", "OneFiveTwo Shrine Light"],
+  [
+    "light",
+    "onefivetwo-shrine-light-color-theme.json",
+    "OneFiveTwo Shrine Light",
+  ],
+  [
+    "restriction",
+    "onefivetwo-dark-heavenly-restriction-color-theme.json",
+    "OneFiveTwo Dark Heavenly Restriction",
+  ],
+  [
+    "stone",
+    "onefivetwo-light-stone-skin-color-theme.json",
+    "OneFiveTwo Light Stone Skin",
+  ],
+  [
+    "clone",
+    "onefivetwo-dark-shadow-clone-color-theme.json",
+    "OneFiveTwo Dark Shadow Clone",
+  ],
+  [
+    "omnitrix",
+    "onefivetwo-dark-the-omnitrix-color-theme.json",
+    "OneFiveTwo Dark The Omnitrix",
+  ],
+  [
+    "wanda",
+    "onefivetwo-dark-scarlet-witch-color-theme.json",
+    "OneFiveTwo Dark Scarlet Witch",
+  ],
+  [
+    "vecna",
+    "onefivetwo-dark-vecna-11-color-theme.json",
+    "OneFiveTwo Dark Vecna 11",
+  ],
+  [
+    "pirates",
+    "onefivetwo-dark-caribbean-pirates-color-theme.json",
+    "OneFiveTwo Dark Caribbean Pirates",
+  ],
+  [
+    "haki",
+    "onefivetwo-dark-conquerors-haki-color-theme.json",
+    "OneFiveTwo Dark Conqueror's Haki",
+  ],
 ];
 
-const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const esc = (s) =>
+  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 // [text, role] pairs per line
 // (simple explicit lines; template literal line built manually below)
 const lines = [
   [["// fetch a user and render their git activity", "c"]],
-  [["import", "k"], [" { ", "v"], ["useEffect", "f"], [", ", "o"], ["useState", "f"], [" } ", "v"], ["from", "k"], [" ", "v"], ["'react'", "s"], [";", "o"]],
+  [
+    ["import", "k"],
+    [" { ", "v"],
+    ["useEffect", "f"],
+    [", ", "o"],
+    ["useState", "f"],
+    [" } ", "v"],
+    ["from", "k"],
+    [" ", "v"],
+    ["'react'", "s"],
+    [";", "o"],
+  ],
   [],
-  [["interface", "k"], [" ", "v"], ["Props", "t"], [" {", "o"]],
-  [["  ", "v"], ["username", "p"], [": ", "o"], ["string", "t"], [";", "o"]],
-  [["  ", "v"], ["limit", "p"], ["?: ", "o"], ["number", "t"], [";", "o"]],
+  [
+    ["interface", "k"],
+    [" ", "v"],
+    ["Props", "t"],
+    [" {", "o"],
+  ],
+  [
+    ["  ", "v"],
+    ["username", "p"],
+    [": ", "o"],
+    ["string", "t"],
+    [";", "o"],
+  ],
+  [
+    ["  ", "v"],
+    ["limit", "p"],
+    ["?: ", "o"],
+    ["number", "t"],
+    [";", "o"],
+  ],
   [["}", "o"]],
   [],
-  [["export function", "k"], [" ", "v"], ["Activity", "f"], ["({ ", "o"], ["username", "v"], [", ", "o"], ["limit", "v"], [" = ", "o"], ["30", "n"], [" }: ", "o"], ["Props", "t"], [") {", "o"]],
-  [["  ", "v"], ["const", "k"], [" [", "o"], ["items", "v"], [", ", "o"], ["setItems", "v"], ["] = ", "o"], ["useState", "f"], ["<", "o"], ["Commit", "t"], ["[]>([]);", "o"]],
+  [
+    ["export function", "k"],
+    [" ", "v"],
+    ["Activity", "f"],
+    ["({ ", "o"],
+    ["username", "v"],
+    [", ", "o"],
+    ["limit", "v"],
+    [" = ", "o"],
+    ["30", "n"],
+    [" }: ", "o"],
+    ["Props", "t"],
+    [") {", "o"],
+  ],
+  [
+    ["  ", "v"],
+    ["const", "k"],
+    [" [", "o"],
+    ["items", "v"],
+    [", ", "o"],
+    ["setItems", "v"],
+    ["] = ", "o"],
+    ["useState", "f"],
+    ["<", "o"],
+    ["Commit", "t"],
+    ["[]>([]);", "o"],
+  ],
   [],
-  [["  ", "v"], ["useEffect", "f"], ["(() => {", "o"]],
-  [["    ", "v"], ["fetch", "f"], ["(", "o"], ["`/api/", "s"], ["${", "k"], ["username", "v"], ["}", "k"], ["/commits?n=", "s"], ["${", "k"], ["limit", "v"], ["}", "k"], ["`", "s"], [")", "o"], ["SEL:.then(r => r.json())", "sel"]],
-  [["      ", "v"], [".then", "f"], ["(", "o"], ["setItems", "err"], [");", "o"]],
-  [["  }, [", "o"], ["username", "v"], [", ", "o"], ["limit", "v"], ["]);", "o"]],
+  [
+    ["  ", "v"],
+    ["useEffect", "f"],
+    ["(() => {", "o"],
+  ],
+  [
+    ["    ", "v"],
+    ["fetch", "f"],
+    ["(", "o"],
+    ["`/api/", "s"],
+    ["${", "k"],
+    ["username", "v"],
+    ["}", "k"],
+    ["/commits?n=", "s"],
+    ["${", "k"],
+    ["limit", "v"],
+    ["}", "k"],
+    ["`", "s"],
+    [")", "o"],
+    ["SEL:.then(r => r.json())", "sel"],
+  ],
+  [
+    ["      ", "v"],
+    [".then", "f"],
+    ["(", "o"],
+    ["setItems", "err"],
+    [");", "o"],
+  ],
+  [
+    ["  }, [", "o"],
+    ["username", "v"],
+    [", ", "o"],
+    ["limit", "v"],
+    ["]);", "o"],
+  ],
   [],
-  [["  ", "v"], ["return", "k"], [" (", "o"]],
-  [["    <", "o"], ["ul", "g"], [" ", "v"], ["className", "a"], ["=", "o"], ['"feed"', "s"], [">", "o"]],
-  [["      {", "o"], ["items", "v"], [".", "o"], ["map", "f"], ["(", "o"], ["c", "v"], [" => <", "o"], ["li", "g"], [" ", "v"], ["key", "a"], ["={", "o"], ["c", "v"], [".", "o"], ["sha", "p"], ["}>{", "o"], ["c", "v"], [".", "o"], ["msg", "p"], ["}</", "o"], ["li", "g"], [">)}", "o"]],
-  [["    </", "o"], ["ul", "g"], [">", "o"]],
+  [
+    ["  ", "v"],
+    ["return", "k"],
+    [" (", "o"],
+  ],
+  [
+    ["    <", "o"],
+    ["ul", "g"],
+    [" ", "v"],
+    ["className", "a"],
+    ["=", "o"],
+    ['"feed"', "s"],
+    [">", "o"],
+  ],
+  [
+    ["      {", "o"],
+    ["items", "v"],
+    [".", "o"],
+    ["map", "f"],
+    ["(", "o"],
+    ["c", "v"],
+    [" => <", "o"],
+    ["li", "g"],
+    [" ", "v"],
+    ["key", "a"],
+    ["={", "o"],
+    ["c", "v"],
+    [".", "o"],
+    ["sha", "p"],
+    ["}>{", "o"],
+    ["c", "v"],
+    [".", "o"],
+    ["msg", "p"],
+    ["}</", "o"],
+    ["li", "g"],
+    [">)}", "o"],
+  ],
+  [
+    ["    </", "o"],
+    ["ul", "g"],
+    [">", "o"],
+  ],
   [["  );", "o"]],
   [["}", "o"]],
-  [["const", "k"], [" ", "v"], ["re", "v"], [" = ", "o"], ["/^[a-f0-9]{7}$/i", "r"], [";  ", "o"], ["// short sha", "c"]],
+  [
+    ["const", "k"],
+    [" ", "v"],
+    ["re", "v"],
+    [" = ", "o"],
+    ["/^[a-f0-9]{7}$/i", "r"],
+    [";  ", "o"],
+    ["// short sha", "c"],
+  ],
 ];
 
 function page(key, file, title) {
-  const t = JSON.parse(fs.readFileSync(path.join(__dirname, "themes", file), "utf8"));
-  const c = t.colors, s = palette[key].syntax, sem = palette[key].semantic, a = palette[key].ansi;
-  const col = { k: s.keyword, s: s.string, f: s.function, n: s.number, t: s.type, p: s.property, g: s.tag, a: s.attribute, o: s.operator, r: s.regex, v: s.variable, c: palette[key].text.comment, err: s.variable };
+  const t = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "themes", file), "utf8"),
+  );
+  const c = t.colors,
+    s = palette[key].syntax,
+    sem = palette[key].semantic,
+    a = palette[key].ansi;
+  const col = {
+    k: s.keyword,
+    s: s.string,
+    f: s.function,
+    n: s.number,
+    t: s.type,
+    p: s.property,
+    g: s.tag,
+    a: s.attribute,
+    o: s.operator,
+    r: s.regex,
+    v: s.variable,
+    c: palette[key].text.comment,
+    err: s.variable,
+  };
 
-  const code_html = lines.map((ln, i) => {
-    const num = i + 1;
-    const active = num === 13;
-    const inner = ln.map(([txt, role]) => {
-      if (txt.startsWith("SEL:")) return `<span style="background:${c["editor.selectionBackground"]}">${esc(txt.slice(4))}</span>`;
-      if (role === "err") return `<span style="color:${col.v};text-decoration:underline wavy ${sem.error};text-underline-offset:3px">${esc(txt)}</span>`;
-      return `<span style="color:${col[role]}">${esc(txt)}</span>`;
-    }).join("");
-    const gutter = { 9: c["editorGutter.modifiedBackground"], 10: c["editorGutter.addedBackground"], 14: c["editorGutter.modifiedBackground"] }[num];
-    return `<div class="ln${active ? " act" : ""}"><span class="g" style="background:${gutter || "transparent"}"></span><span class="n" style="color:${active ? c["editorLineNumber.activeForeground"] : c["editorLineNumber.foreground"]}">${num}</span><span class="t">${inner}${active ? `<span class="cur"></span>` : ""}</span></div>`;
-  }).join("");
+  const code_html = lines
+    .map((ln, i) => {
+      const num = i + 1;
+      const active = num === 13;
+      const inner = ln
+        .map(([txt, role]) => {
+          if (txt.startsWith("SEL:"))
+            return `<span style="background:${c["editor.selectionBackground"]}">${esc(txt.slice(4))}</span>`;
+          if (role === "err")
+            return `<span style="color:${col.v};text-decoration:underline wavy ${sem.error};text-underline-offset:3px">${esc(txt)}</span>`;
+          return `<span style="color:${col[role]}">${esc(txt)}</span>`;
+        })
+        .join("");
+      const gutter = {
+        9: c["editorGutter.modifiedBackground"],
+        10: c["editorGutter.addedBackground"],
+        14: c["editorGutter.modifiedBackground"],
+      }[num];
+      return `<div class="ln${active ? " act" : ""}"><span class="g" style="background:${gutter || "transparent"}"></span><span class="n" style="color:${active ? c["editorLineNumber.activeForeground"] : c["editorLineNumber.foreground"]}">${num}</span><span class="t">${inner}${active ? `<span class="cur"></span>` : ""}</span></div>`;
+    })
+    .join("");
 
   const g = palette[key].git;
   const tree = [
-    ["▾ src", null, 0], ["▾ components", null, 1], ["Activity.tsx", g.modified, 2, "M"], ["Feed.tsx", g.untracked, 2, "U"],
-    ["Header.tsx", g.added, 2, "A"], ["Legacy.tsx", g.deleted, 2, "D"], ["Theme.tsx", g.renamed, 2, "R"], ["Merge.tsx", g.conflict, 2, "!"],
-    ["index.ts", null, 1], ["▸ node_modules", g.ignored, 0], [".env", g.ignored, 0], ["package.json", null, 0],
-  ].map(([n, colr, d, b]) => `<div class="row${n === "Activity.tsx" ? " sel" : ""}" style="padding-left:${12 + d * 14}px;color:${colr || c["sideBar.foreground"]}"><span>${n}</span><span class="b">${b || ""}</span></div>`).join("");
+    ["▾ src", null, 0],
+    ["▾ components", null, 1],
+    ["Activity.tsx", g.modified, 2, "M"],
+    ["Feed.tsx", g.untracked, 2, "U"],
+    ["Header.tsx", g.added, 2, "A"],
+    ["Legacy.tsx", g.deleted, 2, "D"],
+    ["Theme.tsx", g.renamed, 2, "R"],
+    ["Merge.tsx", g.conflict, 2, "!"],
+    ["index.ts", null, 1],
+    ["▸ node_modules", g.ignored, 0],
+    [".env", g.ignored, 0],
+    ["package.json", null, 0],
+  ]
+    .map(
+      ([n, colr, d, b]) =>
+        `<div class="row${n === "Activity.tsx" ? " sel" : ""}" style="padding-left:${12 + d * 14}px;color:${colr || c["sideBar.foreground"]}"><span>${n}</span><span class="b">${b || ""}</span></div>`,
+    )
+    .join("");
 
-  const ansiRow = (names) => names.map((n) => `<span style="color:${a[n]}">██ ${n.replace("bright", "b.")}</span>`).join("  ");
+  const ansiRow = (names) =>
+    names
+      .map(
+        (n) =>
+          `<span style="color:${a[n]}">██ ${n.replace("bright", "b.")}</span>`,
+      )
+      .join("  ");
   return `<!doctype html><html><head><meta charset="utf-8"><style>
 *{box-sizing:border-box}body{margin:0;width:1280px;height:820px;font:13px 'JetBrains Mono','DejaVu Sans Mono',monospace;background:${c["editor.background"]};color:${c["editor.foreground"]};display:flex;flex-direction:column;overflow:hidden}
 .title{height:30px;background:${c["titleBar.activeBackground"]};color:${c["titleBar.activeForeground"]};display:flex;align-items:center;justify-content:center;border-bottom:1px solid ${c["titleBar.border"]};font-size:12px}
@@ -108,5 +334,9 @@ ${ansiRow(["red", "green", "yellow", "blue", "magenta", "cyan", "white"])}<br>${
 }
 
 fs.mkdirSync(path.join(__dirname, "preview"), { recursive: true });
-for (const [key, file, title] of targets) fs.writeFileSync(path.join(__dirname, "preview", `${key}.html`), page(key, file, title));
+for (const [key, file, title] of targets)
+  fs.writeFileSync(
+    path.join(__dirname, "preview", `${key}.html`),
+    page(key, file, title),
+  );
 console.log("wrote preview/dark.html, preview/light.html");
