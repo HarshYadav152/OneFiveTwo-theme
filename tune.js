@@ -8,7 +8,11 @@ const palette = JSON.parse(fs.readFileSync(file, "utf8"));
 
 const toRgb = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
 const lum = (hex) => {
-  const [r, g, b] = toRgb(hex).map((v) => v / 255).map((c) => (c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4)));
+  const [r, g, b] = toRgb(hex)
+    .map((v) => v / 255)
+    .map((c) =>
+      c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4),
+    );
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 };
 const ratio = (a, b) => {
@@ -16,9 +20,13 @@ const ratio = (a, b) => {
   return (l1 + 0.05) / (l2 + 0.05);
 };
 const rgbToHsl = ([r, g, b]) => {
-  r /= 255; g /= 255; b /= 255;
-  const max = Math.max(r, g, b), min = Math.min(r, g, b);
-  let h = 0, s = 0;
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  const max = Math.max(r, g, b),
+    min = Math.min(r, g, b);
+  let h = 0,
+    s = 0;
   const l = (max + min) / 2;
   if (max !== min) {
     const d = max - min;
@@ -35,7 +43,9 @@ const hslToHex = ([h, s, l]) => {
     const k = (n + h * 12) % 12;
     const a = s * Math.min(l, 1 - l);
     const c = l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));
-    return Math.round(c * 255).toString(16).padStart(2, "0");
+    return Math.round(c * 255)
+      .toString(16)
+      .padStart(2, "0");
   };
   return `#${f(0)}${f(8)}${f(4)}`;
 };
@@ -46,7 +56,8 @@ function fix(hex, bg, min, dir) {
   if (ratio(hex, bg) >= target) return hex;
   const [h, s, l] = rgbToHsl(toRgb(hex));
   let nl = l;
-  for (let i = 0; i < 100 && ratio(hslToHex([h, s, nl]), bg) < target; i++) nl = Math.min(1, Math.max(0, nl + dir * 0.01));
+  for (let i = 0; i < 100 && ratio(hslToHex([h, s, nl]), bg) < target; i++)
+    nl = Math.min(1, Math.max(0, nl + dir * 0.01));
   return hslToHex([h, s, nl]);
 }
 
@@ -62,18 +73,27 @@ function apply(mode, group, key, bg, min) {
   }
 }
 
-for (const mode of ["dark", "light"]) {
+for (const mode of Object.keys(palette)) {
   const p = palette[mode];
   const base = p.bg.base;
-  for (const k of ["secondary", "muted", "comment"]) apply(mode, "text", k, base, 4.5);
+  for (const k of ["secondary", "muted", "comment"])
+    apply(mode, "text", k, base, 4.5);
   for (const k of Object.keys(p.syntax)) apply(mode, "syntax", k, base, 4.5);
-  for (const k of Object.keys(p.semantic)) apply(mode, "semantic", k, base, 4.5);
-  for (const k of Object.keys(p.git)) if (k !== "ignored") apply(mode, "git", k, p.bg.raised, 4.5);
+  for (const k of Object.keys(p.semantic))
+    apply(mode, "semantic", k, base, 4.5);
+  for (const k of Object.keys(p.git))
+    if (k !== "ignored") apply(mode, "git", k, p.bg.raised, 4.5);
   apply(mode, "text", "faint", base, 3);
   apply(mode, "accent", "primary", base, 3);
   for (const k of Object.keys(p.ansi)) {
     if (["black", "white", "brightWhite"].includes(k)) continue;
-    apply(mode, "ansi", k, base, k === "brightBlack" && p.type === "dark" ? 3 : 4.5);
+    apply(
+      mode,
+      "ansi",
+      k,
+      base,
+      k === "brightBlack" && p.type === "dark" ? 3 : 4.5,
+    );
   }
 }
 
