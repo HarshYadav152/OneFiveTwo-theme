@@ -1,8 +1,8 @@
 {
   "name": "152theme",
   "displayName": "152theme",
-  "description": "Void Dark (Gojo's Domain Expansion inspired) and Shrine Light (Sukuna's Domain Expansion inspired). High-contrast, WCAG-checked VS Code themes.",
-  "version": "0.1.0",
+  "description": "Ten hand-tuned, WCAG-checked VS Code themes with anime, cartoon and TV-inspired palettes: Void Dark, Shrine Light, Heavenly Restriction, Stone Skin, Shadow Clone, The Omnitrix, Scarlet Witch, Vecna 11, Caribbean Pirates and Conqueror's Haki.",
+  "version": "0.2.0",
   "publisher": "HarshYadav152",
   "license": "MIT",
   "repository": {
@@ -21,12 +21,25 @@
   ],
   "keywords": [
     "theme",
+    "anime theme",
+    "cinema based theme",
     "dark",
     "light",
     "high contrast",
+    "anime",
+    "jujutsu kaisen",
     "gojo",
     "sukuna",
-    "jujutsu kaisen"
+    "toji",
+    "naruto",
+    "ben 10",
+    "omnitrix",
+    "scarlet witch",
+    "stranger things",
+    "vecna",
+    "one piece",
+    "haki",
+    "pirates of the caribbean"
   ],
   "scripts": {
     "tune": "node tune.js",
@@ -45,6 +58,46 @@
         "label": "OneFiveTwo Shrine Light",
         "uiTheme": "vs",
         "path": "./themes/onefivetwo-shrine-light-color-theme.json"
+      },
+      {
+        "label": "OneFiveTwo Dark Heavenly Restriction",
+        "uiTheme": "vs-dark",
+        "path": "./themes/onefivetwo-dark-heavenly-restriction-color-theme.json"
+      },
+      {
+        "label": "OneFiveTwo Light Stone Skin",
+        "uiTheme": "vs",
+        "path": "./themes/onefivetwo-light-stone-skin-color-theme.json"
+      },
+      {
+        "label": "OneFiveTwo Dark Shadow Clone",
+        "uiTheme": "vs-dark",
+        "path": "./themes/onefivetwo-dark-shadow-clone-color-theme.json"
+      },
+      {
+        "label": "OneFiveTwo Dark The Omnitrix",
+        "uiTheme": "vs-dark",
+        "path": "./themes/onefivetwo-dark-the-omnitrix-color-theme.json"
+      },
+      {
+        "label": "OneFiveTwo Dark Scarlet Witch",
+        "uiTheme": "vs-dark",
+        "path": "./themes/onefivetwo-dark-scarlet-witch-color-theme.json"
+      },
+      {
+        "label": "OneFiveTwo Dark Vecna 11",
+        "uiTheme": "vs-dark",
+        "path": "./themes/onefivetwo-dark-vecna-11-color-theme.json"
+      },
+      {
+        "label": "OneFiveTwo Dark Caribbean Pirates",
+        "uiTheme": "vs-dark",
+        "path": "./themes/onefivetwo-dark-caribbean-pirates-color-theme.json"
+      },
+      {
+        "label": "OneFiveTwo Dark Conqueror's Haki",
+        "uiTheme": "vs-dark",
+        "path": "./themes/onefivetwo-dark-conquerors-haki-color-theme.json"
       }
     ]
   },
@@ -52,5 +105,9 @@
   "galleryBanner": {
     "color": "#04050d",
     "theme": "dark"
+  },
+  "author": {
+    "name": "Harsh Yadav",
+    "url": "https://github.com/HarshYadav152"
   }
 }
