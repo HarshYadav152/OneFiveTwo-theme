@@ -5,20 +5,36 @@
 const fs = require("fs");
 const path = require("path");
 
-const palette = JSON.parse(fs.readFileSync(path.join(__dirname, "palette.json"), "utf8"));
+const palette = JSON.parse(
+  fs.readFileSync(path.join(__dirname, "palette.json"), "utf8"),
+);
 
 // append alpha (0-1) to a #rrggbb color
-const alpha = (hex, a) => hex + Math.round(a * 255).toString(16).padStart(2, "0");
+const alpha = (hex, a) =>
+  hex +
+  Math.round(a * 255)
+    .toString(16)
+    .padStart(2, "0");
 
 // blend hex `b` over `a` by t (0-1) -> opaque hex
 const mix = (a, b, t) => {
   const pa = [1, 3, 5].map((i) => parseInt(a.slice(i, i + 2), 16));
   const pb = [1, 3, 5].map((i) => parseInt(b.slice(i, i + 2), 16));
-  return "#" + pa.map((v, i) => Math.round(v + (pb[i] - v) * t).toString(16).padStart(2, "0")).join("");
+  return (
+    "#" +
+    pa
+      .map((v, i) =>
+        Math.round(v + (pb[i] - v) * t)
+          .toString(16)
+          .padStart(2, "0"),
+      )
+      .join("")
+  );
 };
 
 function buildTheme(name, p) {
-  const { bg, border, text, accent, selection, semantic, syntax, git, ansi } = p;
+  const { bg, border, text, accent, selection, semantic, syntax, git, ansi } =
+    p;
   const isDark = p.type === "dark";
 
   const colors = {
@@ -327,26 +343,145 @@ function buildTheme(name, p) {
 
   const tokenColors = [
     tok(["comment", "punctuation.definition.comment"], text.comment),
-    tok(["variable", "variable.other.readwrite", "meta.definition.variable variable.other.readwrite"], syntax.variable),
-    tok(["variable.language", "variable.parameter.function.language.special.self", "variable.language.this"], syntax.keyword, "italic"),
+    tok(
+      [
+        "variable",
+        "variable.other.readwrite",
+        "meta.definition.variable variable.other.readwrite",
+      ],
+      syntax.variable,
+    ),
+    tok(
+      [
+        "variable.language",
+        "variable.parameter.function.language.special.self",
+        "variable.language.this",
+      ],
+      syntax.keyword,
+      "italic",
+    ),
     tok(["variable.parameter", "meta.parameters"], syntax.variable),
-    tok(["variable.other.property", "variable.other.object.property", "support.variable.property", "meta.object-literal.key", "meta.property-name"], syntax.property),
+    tok(
+      [
+        "variable.other.property",
+        "variable.other.object.property",
+        "support.variable.property",
+        "meta.object-literal.key",
+        "meta.property-name",
+      ],
+      syntax.property,
+    ),
     tok(["constant", "constant.language", "support.constant"], syntax.number),
     tok(["constant.numeric", "constant.character.numeric"], syntax.number),
-    tok(["keyword", "keyword.control", "keyword.other", "storage", "storage.type", "storage.modifier"], syntax.keyword),
-    tok(["keyword.operator", "keyword.operator.assignment", "keyword.operator.arithmetic", "keyword.operator.logical", "keyword.operator.comparison", "keyword.operator.ternary"], syntax.operator),
-    tok(["punctuation", "meta.brace", "punctuation.separator", "punctuation.terminator"], syntax.operator),
-    tok(["punctuation.definition.string", "string", "string.quoted", "string.template"], syntax.string),
-    tok(["punctuation.definition.template-expression", "punctuation.section.embedded"], syntax.keyword),
-    tok(["constant.character.escape", "string.regexp", "constant.other.character-class.regexp"], syntax.regex),
-    tok(["entity.name.function", "meta.function-call entity.name.function", "support.function", "meta.function-call"], syntax.function),
-    tok(["entity.name.type", "entity.name.class", "entity.other.inherited-class", "support.class", "support.type", "entity.name.namespace", "meta.type.annotation"], syntax.type),
-    tok(["entity.name.tag", "meta.tag", "punctuation.definition.tag"], syntax.tag),
-    tok(["entity.other.attribute-name", "entity.other.attribute-name.html", "entity.other.attribute-name.jsx"], syntax.attribute),
-    tok(["support.type.property-name.css", "support.type.vendored.property-name.css"], syntax.property),
+    tok(
+      [
+        "keyword",
+        "keyword.control",
+        "keyword.other",
+        "storage",
+        "storage.type",
+        "storage.modifier",
+      ],
+      syntax.keyword,
+    ),
+    tok(
+      [
+        "keyword.operator",
+        "keyword.operator.assignment",
+        "keyword.operator.arithmetic",
+        "keyword.operator.logical",
+        "keyword.operator.comparison",
+        "keyword.operator.ternary",
+      ],
+      syntax.operator,
+    ),
+    tok(
+      [
+        "punctuation",
+        "meta.brace",
+        "punctuation.separator",
+        "punctuation.terminator",
+      ],
+      syntax.operator,
+    ),
+    tok(
+      [
+        "punctuation.definition.string",
+        "string",
+        "string.quoted",
+        "string.template",
+      ],
+      syntax.string,
+    ),
+    tok(
+      [
+        "punctuation.definition.template-expression",
+        "punctuation.section.embedded",
+      ],
+      syntax.keyword,
+    ),
+    tok(
+      [
+        "constant.character.escape",
+        "string.regexp",
+        "constant.other.character-class.regexp",
+      ],
+      syntax.regex,
+    ),
+    tok(
+      [
+        "entity.name.function",
+        "meta.function-call entity.name.function",
+        "support.function",
+        "meta.function-call",
+      ],
+      syntax.function,
+    ),
+    tok(
+      [
+        "entity.name.type",
+        "entity.name.class",
+        "entity.other.inherited-class",
+        "support.class",
+        "support.type",
+        "entity.name.namespace",
+        "meta.type.annotation",
+      ],
+      syntax.type,
+    ),
+    tok(
+      ["entity.name.tag", "meta.tag", "punctuation.definition.tag"],
+      syntax.tag,
+    ),
+    tok(
+      [
+        "entity.other.attribute-name",
+        "entity.other.attribute-name.html",
+        "entity.other.attribute-name.jsx",
+      ],
+      syntax.attribute,
+    ),
+    tok(
+      [
+        "support.type.property-name.css",
+        "support.type.vendored.property-name.css",
+      ],
+      syntax.property,
+    ),
     tok(["support.type.property-name.json"], syntax.property),
-    tok(["entity.other.attribute-name.class.css", "entity.other.attribute-name.id.css", "entity.name.tag.css"], syntax.type),
-    tok(["markup.heading", "entity.name.section.markdown"], syntax.keyword, "bold"),
+    tok(
+      [
+        "entity.other.attribute-name.class.css",
+        "entity.other.attribute-name.id.css",
+        "entity.name.tag.css",
+      ],
+      syntax.type,
+    ),
+    tok(
+      ["markup.heading", "entity.name.section.markdown"],
+      syntax.keyword,
+      "bold",
+    ),
     tok(["markup.bold"], syntax.function, "bold"),
     tok(["markup.italic"], syntax.keyword, "italic"),
     tok(["markup.inline.raw", "markup.fenced_code.block"], syntax.string),
@@ -393,11 +528,60 @@ fs.mkdirSync(outDir, { recursive: true });
 
 const targets = [
   ["dark", "OneFiveTwo Void Dark", "onefivetwo-void-dark-color-theme.json"],
-  ["light", "OneFiveTwo Shrine Light", "onefivetwo-shrine-light-color-theme.json"],
+  [
+    "light",
+    "OneFiveTwo Shrine Light",
+    "onefivetwo-shrine-light-color-theme.json",
+  ],
+  [
+    "restriction",
+    "OneFiveTwo Dark Heavenly Restriction",
+    "onefivetwo-dark-heavenly-restriction-color-theme.json",
+  ],
+  [
+    "stone",
+    "OneFiveTwo Light Stone Skin",
+    "onefivetwo-light-stone-skin-color-theme.json",
+  ],
+  [
+    "clone",
+    "OneFiveTwo Dark Shadow Clone",
+    "onefivetwo-dark-shadow-clone-color-theme.json",
+  ],
+  [
+    "omnitrix",
+    "OneFiveTwo Dark The Omnitrix",
+    "onefivetwo-dark-the-omnitrix-color-theme.json",
+  ],
+  [
+    "wanda",
+    "OneFiveTwo Dark Scarlet Witch",
+    "onefivetwo-dark-scarlet-witch-color-theme.json",
+  ],
+  [
+    "vecna",
+    "OneFiveTwo Dark Vecna 11",
+    "onefivetwo-dark-vecna-11-color-theme.json",
+  ],
+  [
+    "pirates",
+    "OneFiveTwo Dark Caribbean Pirates",
+    "onefivetwo-dark-caribbean-pirates-color-theme.json",
+  ],
+  [
+    "haki",
+    "OneFiveTwo Dark Conqueror's Haki",
+    "onefivetwo-dark-conquerors-haki-color-theme.json",
+  ],
 ];
 
 for (const [key, name, file] of targets) {
   const theme = buildTheme(name, palette[key]);
-  fs.writeFileSync(path.join(outDir, file), JSON.stringify(theme, null, 2) + "\n");
-  console.log(`built ${file} (${Object.keys(theme.colors).length} workbench keys)`);
+  fs.writeFileSync(
+    path.join(outDir, file),
+    JSON.stringify(theme, null, 2) + "\n",
+  );
+  console.log(
+    `built ${file} (${Object.keys(theme.colors).length} workbench keys)`,
+  );
 }
